@@ -1,54 +1,54 @@
-# Run Time Adder Script 使用说明
+# Run Time Adder Script Instructions
 
-本项目支持两种登录方式来访问 **Pterodactyl** 或相关系统：
+This project supports two login methods to access Pterodactyl or related systems:
 
-1. **使用 Cookie 登录**  
-2. **使用邮箱和密码登录**
+1. **Login using Cookie**  
+2. **Login using email and password**
 
 ---
 
-## 方式一：使用 Cookie 登录
+## Method 1: Login Using Cookie
 
-### 适用场景
-- 需要保持长期会话，避免频繁登录。
-- 已经拥有有效的 Cookie，可以直接复用。
+### Applicable Scenarios
+- You need to maintain a long-term session to avoid frequent logins.
+- You already have a valid cookie that can be reused.
 
-### 获取 Cookie 的步骤
-1. 登录目标网站（如 **Pterodactyl** 面板）。
-2. 打开浏览器 **开发者工具**（按 `F12` 或右键点击页面选择 **检查**）。
-3. 切换到 **Application（应用）** 标签页。
-4. 在左侧找到 **Cookies** 部分，选择当前网站。
-5. 找到与登录相关的 cookie（例如 `session`, `auth_token` 等）。
-6. 复制该 Cookie 值。
+### Steps to Obtain the Cookie
+1. Log in to the target website (such as the Pterodactyl panel).
+2. Open the browser Developer Tools (press F12 or right-click the page and select Inspect).
+3. Switch to the Application tab.
+4. In the left panel, find the Cookies section and select the current site.
+5. Locate the cookie related to login (such as session, auth_token, etc.).
+6. Copy the cookie value.
 
-### 在 GitHub Secrets 中配置
-1. 打开 GitHub 仓库，进入 **Settings > Secrets and variables > Actions**。
+### Configure in GitHub Secrets
+1. Open your GitHub repository and go to **Settings > Secrets and variables > Actions**。
 2. 点击 **New repository secret**。
-3. 新建一个名为 `REMEMBER_WEB_COOKIE` 的 secret，并将复制的 Cookie 值粘贴进去。
+3. Create a secret named REMEMBER_WEB_COOKIE and paste the copied cookie value into it.
 
-### 好处
-- 每次工作流运行时会自动使用该 Cookie 进行登录，无需再次输入账号和密码。
+### Benefits
+- Each workflow run will automatically use this cookie to log in without re-entering your account and password.
 
 ---
 
-## 方式二：使用邮箱和密码登录
+## Method 2: Login Using Email and Password
 
-如果没有有效的 Cookie，可以使用邮箱和密码方式登录。
+If you don’t have a valid cookie, you can log in using an email and password.
 
-### 在 GitHub Secrets 中配置
-1. 打开 GitHub 仓库，进入 **Settings > Secrets and variables > Actions**。
+### Configure in GitHub Secrets
+1. Open your GitHub repository and go to **Settings > Secrets and variables > Actions**。
 2. 点击 **New repository secret**。
-3. 新建以下两个 Secrets：
-   - `PTERODACTYL_EMAIL`：你的 Pterodactyl 账户邮箱。
-   - `PTERODACTYL_PASSWORD`：你的 Pterodactyl 账户密码。
+3. Create the following two secrets：
+   - `PTERODACTYL_EMAIL`：Your Pterodactyl account email.
+   - `PTERODACTYL_PASSWORD`：Your Pterodactyl account password.
 
-### 好处
-- 无需手动获取 Cookie，直接用账号信息完成登录。
+### Benefits
+- No need to manually obtain a cookie; simply log in using your account credentials.
 
 ---
 
-## 推荐做法
-- **优先使用 Cookie**：稳定性更高，不会因为密码变动导致任务失败。  
-- **备用邮箱/密码方式**：当 Cookie 失效时，可以使用邮箱和密码重新登录。  
+## Recommended Approach
+- **Prefer using Cookie**：More stable and won’t fail due to password changes.  
+- **Use email/password as backup**：When the cookie expires, you can use email and password to log in again.  
 
 ---
